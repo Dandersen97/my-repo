@@ -101,8 +101,10 @@ public class Program {
 		public static void checking(String n, String l) { }
 			//public static void checking(String, int)
 		public static void checking(String n, int x) {
-			if (x == 3) {return:}
-		}
+			if (x == 3){ //return ""; 
+				}
+			}
+		
 		
 		public static String fullName(String fn, String ln){
 			if (ln.startsWith("D")){ return ""; }
