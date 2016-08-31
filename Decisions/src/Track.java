@@ -78,14 +78,14 @@ public class Track {
 	
 	// TODO create a function that returns a string duration in minutes and seconds ( human readable )
 	public static String longDuration(int durationTime){
-		int min = durationTime / 60;
-		int sec = durationTime % 60;
+		double min = (double)durationTime / 60;
+		double sec = (double)durationTime % 60;
 		
 		if(sec < 10){
-			return String.format("%i:%i", min, sec);
+			return String.format("%d:%d", min, sec);
 		}
 		else{
-			return String.format("%i:0%i", min, sec);
+			return String.format("%d:0%d", min, sec);
 		}
 	}
 	
@@ -94,9 +94,11 @@ public class Track {
 	// TODO create a function that prints out the track's information as follows:
 	public static String AllInfo(int tn, String t, String art, int time, int br){
 
-		return String.format("%i - %s\n%s\n%s\n%i %s", tn, t, art, 
-				Track.longDuration(time), br, Track.bitRating(br));
+		return String.format("%d - %s \n%s \n%d \n%d %s", tn, t, art, 
+				longDuration(time), br, bitRating(br));
 	}
+	
+
 	/*
 	   {track number} - {title}
 	   {artist}
