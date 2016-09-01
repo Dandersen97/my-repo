@@ -1,7 +1,4 @@
-/*
- * This class takes us back to the good old days of Napster and Morpheus file sharing. The track below
- * represents a MP3 audio track. Complete the todo statements and submit the file to moodle.
- */
+//Devon Andersen
 import java.util.Scanner;
 public class Track {	
 	public static Scanner scanner = new Scanner(System.in);
@@ -51,10 +48,11 @@ public class Track {
 		System.out.print("Enter bit rate: ");
 		bitRate = Integer.parseInt(scanner.nextLine());
 		
-		if((bitRate > 128 && bitRate < 160) || (bitRate > 160 && bitRate < 192) ||
-				(bitRate > 192 && bitRate < 256) || (bitRate > 256 && bitRate < 320)){
-			bitRate = 128;
-		}
+		if(bitRate > 128 && bitRate < 160){bitRate = 128;}
+		else if(bitRate > 160 && bitRate < 192){bitRate = 160;}
+		else if(bitRate > 192 && bitRate < 256){bitRate = 192;}
+		else if(bitRate > 256 && bitRate < 320){bitRate = 256;}
+		else if(bitRate > 320){bitRate = 320;}
 	}
 	
 	
@@ -64,39 +62,39 @@ public class Track {
 	// 192, 256 = "Better"
 	// 320 = "Best
 	
-	public static String bitRating(int br){
-		if (br == 128 || br == 160){
-			return "Good";}
-		else if (br == 192 || br == 256){
-			return "Better";}
-		else if (br == 320){
-			return "Best";}
+	String bitRating(){
+		if (bitRate == 128 || bitRate == 160){
+			return "Good Quality";}
+		else if (bitRate == 192 || bitRate == 256){
+			return "Better Quality";}
+		else if (bitRate == 320){
+			return "Best Quality";}
 		else{
 			return "Error";}	
 	}
 	
 	
 	// TODO create a function that returns a string duration in minutes and seconds ( human readable )
-	public static String longDuration(int durationTime){
-		double min = (double)durationTime / 60;
-		double sec = (double)durationTime % 60;
+	String longDuration(){
+		int min = duration / 60;
+		int sec = duration % 60;
 		
 		if(sec < 10){
-			return String.format("%d:%d", min, sec);
-		}
+			return String.format("%d:0%d", min, sec);}
 		else{
-			return String.format("%d:0%d", min, sec);
-		}
+			return String.format("%d:%d", min, sec);}
 	}
 	
 	
 	
 	// TODO create a function that prints out the track's information as follows:
-	public static String AllInfo(int tn, String t, String art, int time, int br){
-
-		return String.format("%d - %s \n%s \n%d \n%d %s", tn, t, art, 
-				longDuration(time), br, bitRating(br));
+	
+	String AllInfo(){
+		
+		return String.format("%d - %s \n%s \nDuration: %s \n%d Kbps %s", trackNum, title, artist, 
+				longDuration(), bitRate, bitRating());
 	}
+	
 	
 
 	/*

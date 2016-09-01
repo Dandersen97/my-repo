@@ -1,8 +1,9 @@
-
+// Devon Andersen
 /*
  * Create a class that store information for a game. Please try to research and use real examples. Complete the todo statements and upload to moodle when
  * completed.
  */
+import java.text.DecimalFormat;
 import java.util.Scanner;
 public class VideoGame {
 		public static Scanner in = new Scanner(System.in);
@@ -25,11 +26,7 @@ public class VideoGame {
 		private double cost;
 		public double getCost() { return cost; }
 		public void setCost(double c) { cost = c; }
-		
-	public static void main(String[] args) {
-		
-	}
-		// TODO Auto-generated method stub
+		private String age;
 		/*
 		 Create fields for:
 		 --------------------------------------
@@ -40,7 +37,7 @@ public class VideoGame {
 		 	Game Rating C - Early Childhood, E - Everyone, E 10+ - Everyone 10+, Teen (13+), Mature 17+,  Adult Only 18+
 		 	Cost
 		 */
-		// TODO Create default constructor to prompt for game information 12pts
+
 		public VideoGame() {
 			System.out.print("Enter game title: ");
 			gameTitle = VideoGame.in.nextLine();
@@ -57,28 +54,48 @@ public class VideoGame {
 		}
 
 
+		String AgeRating(){
+			System.out.print("Enter your age: ");
+			age = VideoGame.in.nextLine();
+			if (gameRating.equals("C")){
+				if (Integer.parseInt(age) < 10){return "Good to play";}
+				else{return "Don't play";}}
+			else if (gameRating.equals("E")){
+				return "Good to play";}
+			else if (gameRating.equals("E 10+") ){
+				if (Integer.parseInt(age) >= 10){return "Good to play";}
+				else{return "Don't play";}}
+			else if (gameRating.equals("T")){
+				if (Integer.parseInt(age) >= 13){return "Good to play";}
+				else{return "Don't play";}}
+			else if (gameRating.equals("M")){
+				if (Integer.parseInt(age) >= 17){return "Good to play";}
+				else{return "Don't play";}}
+			else if (gameRating.equals("A")){
+				if (Integer.parseInt(age) >= 18){return "Good to play";}
+				else{return "Don't play";}}
+			else{return "Error";}
+		}
 		
 		
-				
+		String AllGameInfo(){
+		 	DecimalFormat fmt = new DecimalFormat("$#,##0.00");
+		 	String prettyMoney = fmt.format(cost); 
+		 	
+		 	String gameRatingText = null;
+		 	if (gameRating.equals("E"))  {gameRatingText = "Everyone";}
+		 	else if (gameRating.equals("C"))  {gameRatingText = "Early Childhood";}
+		 	else if (gameRating.equals("E 10+"))  {gameRatingText = "Everyone 10 and Up";}
+		 	else if (gameRating.equals("T"))  {gameRatingText = "Teen (13+)";}
+		 	else if (gameRating.equals("M"))  {gameRatingText = "Mature (17+)";}
+		 	else if (gameRating.equals("A"))  {gameRatingText = "Adults Only (18+)";}
+		 	
+			return String.format("%s - %s\n%s\n%s %s Number of Players: %s\nCost: %s", gameTitle, genre,
+					platform, gameRating, gameRatingText, numPlayers, prettyMoney);
+		}
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		// TODO Create function to prompt the individual for their age and return if they are allowed 8pts
-		// to play the game based on the ESRB ratings chart and the information provided.
-		
+
 		// TODO Create print function to print out game details 7pts
 		/*
 		 	{title} - {genre}
