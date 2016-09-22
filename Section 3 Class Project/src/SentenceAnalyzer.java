@@ -27,7 +27,7 @@ public class SentenceAnalyzer {
 		String pattern2 = "^[a-zA-Z\', ]{0,}[\\.?]$";
 		
 		if (snt.matches(pattern)){
-			System.out.println(snt.length());
+			System.out.println("There are " + snt.length() + " letters in this sentence.");
 			
 			
 			String[] words = snt.split(" ");
@@ -36,20 +36,17 @@ public class SentenceAnalyzer {
 				wordCount = wordCount + 1;
 				
 				if( w.matches(pattern2)){
-					w.replaceFirst("\\.", "");
-					System.out.println(w + " IS LAST");
+					String newStr = w.replace(".", "");
+					System.out.println(newStr);
+					break;
 					}
 
 				System.out.println(w);	
 			}
-			
 			System.out.println("There are " + wordCount + " words in the sentence.");
-		
-		
-		
 		}
 		else{
-			System.out.println("BAD");}
+			System.out.println("Bad Sentence");}
 		
 	}
 
