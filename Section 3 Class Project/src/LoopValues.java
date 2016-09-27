@@ -13,7 +13,7 @@ public class LoopValues {
 	public static void main(String[] args) {
 		
 		int num = 0;
-		List<Integer> numbers = new ArrayList();
+		List<Integer> numbers = new ArrayList<Integer>();
 		
 		do{
 			System.out.print("Enter a number: ");
