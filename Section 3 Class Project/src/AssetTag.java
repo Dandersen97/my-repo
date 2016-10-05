@@ -62,32 +62,37 @@ public class AssetTag {
 		assets.add("0000158CMPMNM121 00021720160113D66");
 		assets.add("0000311PHNMNM102 00046820140416EEF");
 		assets.add("0000444PRJSAS102 00092020150722FFF");
+		
 		assets.add("0002589PRNJEJ004 000A2220150801982");
+		
 		assets.add("0000011CMPMNM108J00031120140509460");
 		assets.add("0001635LPTMNM115 00031120150807ABE");
 		assets.add("0000387CMPDCDC10300142220130807CAB");
 		assets.add("0002020OTHDCDC10500091820120202DEF");
 		assets.add("0008511TBTMNM104 00022920150101BAD");
 		assets.add("8675309OTHMNM113 00063620140611DAD");
-				
-		for(String a : assets){
-			if(a.matches("^[0-9]{7}[A-Z]{5}[0-9A-Z ]{5}[0-9A-Z]{14}[0-9A-F]{3}$")){
-				TagCut(a);
-				print();
-			}
 			
+		
+		
+		for(String a : assets){	
+			AssetTag at = new AssetTag(a);
+			print();
 		}
-
 	}
 	
-	public static void TagCut(String tag) {
-		setDBId(tag.substring(0, 7));
-		setDevice(tag.substring(7, 10));
-		setBuilding(tag.substring(10, 12));
-		setRoom(tag.substring(12, 17));
-		setPO(tag.substring(17, 23));
-		setTagDate(tag.substring(23, 31));
-		setChecksum(tag.substring(31, 34));		
+
+
+
+	public AssetTag(String tag) {
+		
+		if(tag.matches("^[0-9]{7}[A-Z]{5}[0-9A-Z ]{5}[0-9]{14}[0-9A-F]{3}$")){
+			setDBId(tag.substring(0, 7));
+			setDevice(tag.substring(7, 10));
+			setBuilding(tag.substring(10, 12));
+			setRoom(tag.substring(12, 17));
+			setPO(tag.substring(17, 23));
+			setTagDate(tag.substring(23, 31));
+			setChecksum(tag.substring(31, 34));}
 		}
 	
 	public static void print(){
